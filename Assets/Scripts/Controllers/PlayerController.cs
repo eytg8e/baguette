@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [Header("플레이어 상태")]
     public bool isDead = false;
     public bool isGround = true;
+    public PowerUpManager powerUpManager;
     [SerializeField] float walkSpeed;
     [Tooltip("플레이어 최대 체력")]
     [SerializeField] private int maxHealth = 5;
