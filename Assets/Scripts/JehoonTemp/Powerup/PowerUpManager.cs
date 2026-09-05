@@ -157,6 +157,7 @@ public class PowerUpManager : MonoBehaviour
     /// <returns>버터 파워업 상태를 알려주는 bool</returns>
     public bool GetIsButterPowerUp()
     {
+        Debug.Log("GetIsButterPowerUp 호출: " + isButterPowerUp);
         return isButterPowerUp;
     }
     /// <summary>

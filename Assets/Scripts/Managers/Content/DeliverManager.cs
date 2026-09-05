@@ -89,6 +89,7 @@ public class DeliverManager
     {
         // Reduce bread
         WeaponHandler weaponHandler = player.weaponHandler;
+        PowerUpManager powerUpManager = player.powerUpManager;
         int curBread = weaponHandler.curBread;
         DeliveryPair pair = _deliveries.Find(delivery => delivery.Villager == villager);
         UI_DeliveryCard deliveryCard = pair.Card;
@@ -111,8 +112,13 @@ public class DeliverManager
         // deliveryCard 리스트에서 제거 및 Destroy
         DestroyDelivery(pair);
 
+        float reward = deliveryCard.Reward;
         // Earn Money
-        Managers.Money.Money = Managers.Money.Money + deliveryCard.Reward;
+        if (powerUpManager.GetIsButterPowerUp())
+        {
+            reward = reward * 1.25f;
+        }
+        Managers.Money.Money = Managers.Money.Money + reward;
     }
 
     public void DestroyDelivery(UI_DeliveryCard deliveryCard)
